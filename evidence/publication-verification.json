@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "verified_utc": "2026-11-06T18:17:48.062471+00:00",
+  "scope": "Standalone source packaging verification; no new performance measurements. Historical evidence retains its original provenance.",
+  "command": [
+    "make",
+    "-j2",
+    "test"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 13.499350750000303,
+  "environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.7"
+  },
+  "native_comparisons": 528,
+  "end_to_end_tests": 19,
+  "source_hashes": {
+    "Makefile": "b99cbed65d9f9debff5b5c5a407e2a8b8fe36e7da43daf3b7f3ea0f7a944c8a5",
+    "include/strata.hpp": "36d315ec219ae9baba46c91430e37870b4382379ec2a08ca290fa6551967b39a",
+    "scripts/benchmark.py": "f008cd6791e3416f38dd7d582b471ad839a3665ca2bdcef9316dbf5ff3241183",
+    "scripts/build_metadata.py": "8e19fd281dd6a2a99f75e8fb479116c672f011eb3da0941e6e4fa29d5c303988",
+    "scripts/client.py": "6fdad6bd69bd496c058bedf6ceb31decbff0766aa22bc28d1469b3b45306a969",
+    "scripts/crash_demo.py": "eea8824a28ff5a7894e93f6e0978fcc620ae71d633946e89f3fbe9fb58b6fd6b",
+    "src/benchmark.cpp": "040b7191e75568b4a924ee6a6eb126e51eab516e69ec9f8927f0a10dcc45738c",
+    "src/engine.cpp": "35dbd843e19bb6918fae77bc278e7ce1a1badd6773e7759dc6569805c22c55b5",
+    "src/server.cpp": "46f91e78517e592d6fbeff8398edde3fffb026a8dba14b6e3bfaf93ed6ea1b45",
+    "tests/core_test.cpp": "37a6d4a2150257ca075f07482231c353093fdeb8e70f5b663c2744863774898e",
+    "tests/test_e2e.py": "4baa2968678ff7285996b73e8e8e076bd4d1853d1eb6e4fa89c9a7f5b789555c"
+  },
+  "log": "publication-test.log",
+  "hosted_ci": "not yet executed as of this record",
+  "authorship": "AI-assisted portfolio project; the included independent review is automated."
+}

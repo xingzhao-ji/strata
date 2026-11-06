@@ -1,0 +1,91 @@
+{
+  "verified_at_utc": "2026-10-23T17:09:43.051484+00:00",
+  "checks": [
+    {
+      "environment": "macOS optimized",
+      "command": "make test build/strata-bench",
+      "exit_code": 0,
+      "e2e_tests": 19,
+      "e2e_seconds": 8.675,
+      "native_index_scan_comparisons": 528,
+      "log": "test.log"
+    },
+    {
+      "environment": "macOS AddressSanitizer + UndefinedBehaviorSanitizer",
+      "command": "make sanitize",
+      "exit_code": 0,
+      "e2e_tests": 19,
+      "e2e_seconds": 10.045,
+      "native_index_scan_comparisons": 528,
+      "log": "sanitize.log"
+    },
+    {
+      "environment": "macOS ThreadSanitizer",
+      "command": "make thread-sanitize",
+      "exit_code": 0,
+      "e2e_tests": 19,
+      "e2e_seconds": 14.439,
+      "native_index_scan_comparisons": 0,
+      "log": "thread-sanitize.log"
+    },
+    {
+      "environment": "Linux optimized",
+      "command": "docker run --rm --network none --cpus 2 --memory 512m strata-check",
+      "exit_code": 0,
+      "e2e_tests": 19,
+      "e2e_seconds": 8.739,
+      "native_index_scan_comparisons": 528,
+      "log": "linux-test.log"
+    },
+    {
+      "environment": "Linux AddressSanitizer + UndefinedBehaviorSanitizer",
+      "command": "docker run --rm --network none --cpus 2 --memory 512m strata-check make sanitize",
+      "exit_code": 0,
+      "e2e_tests": 19,
+      "e2e_seconds": 9.391,
+      "native_index_scan_comparisons": 528,
+      "log": "linux-sanitize.log"
+    }
+  ],
+  "benchmark": {
+    "command": "make benchmark",
+    "exit_code": 0,
+    "runs": 3,
+    "all_query_results_identical": true,
+    "evidence": "benchmark.json",
+    "build_metadata_and_binary_hashes_verified": true
+  },
+  "crash_demo": {
+    "command": "python3 scripts/crash_demo.py",
+    "exit_code": 0,
+    "evidence": "crash-demo.json"
+  },
+  "review": {
+    "assessment": "accepted by independent agent; no material correctness blocker",
+    "minor_findings": 2,
+    "minor_findings_addressed": 2,
+    "human_employer_review": false,
+    "evidence": "independent-review.md"
+  },
+  "hosted_ci_executed": false,
+  "historical_failures": [
+    "initial absent executable (expected red)",
+    "overload harness handshake/reset assumption (fixed)",
+    "Docker unsupported --progress flag (removed)",
+    "missing Linux sanitizer runtime (installed explicitly)"
+  ],
+  "source_sha256": {
+    "Dockerfile": "aaa6ac117d71afb01442ff1af9893b0b2b5755f50e98a0f4358912a71d3ee740",
+    "Makefile": "b99cbed65d9f9debff5b5c5a407e2a8b8fe36e7da43daf3b7f3ea0f7a944c8a5",
+    "include/strata.hpp": "36d315ec219ae9baba46c91430e37870b4382379ec2a08ca290fa6551967b39a",
+    "scripts/benchmark.py": "f008cd6791e3416f38dd7d582b471ad839a3665ca2bdcef9316dbf5ff3241183",
+    "scripts/build_metadata.py": "8e19fd281dd6a2a99f75e8fb479116c672f011eb3da0941e6e4fa29d5c303988",
+    "scripts/client.py": "6fdad6bd69bd496c058bedf6ceb31decbff0766aa22bc28d1469b3b45306a969",
+    "scripts/crash_demo.py": "eea8824a28ff5a7894e93f6e0978fcc620ae71d633946e89f3fbe9fb58b6fd6b",
+    "src/benchmark.cpp": "040b7191e75568b4a924ee6a6eb126e51eab516e69ec9f8927f0a10dcc45738c",
+    "src/engine.cpp": "35dbd843e19bb6918fae77bc278e7ce1a1badd6773e7759dc6569805c22c55b5",
+    "src/server.cpp": "46f91e78517e592d6fbeff8398edde3fffb026a8dba14b6e3bfaf93ed6ea1b45",
+    "tests/core_test.cpp": "37a6d4a2150257ca075f07482231c353093fdeb8e70f5b663c2744863774898e",
+    "tests/test_e2e.py": "4baa2968678ff7285996b73e8e8e076bd4d1853d1eb6e4fa89c9a7f5b789555c"
+  }
+}

@@ -1,0 +1,32 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  104.4kB
+
+Step 1/6 : FROM ubuntu:24.04
+ ---> 68ee22004a91
+Step 2/6 : RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends clang libclang-rt-18-dev make python3 ca-certificates && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 5f72af3b8376
+Step 3/6 : WORKDIR /work
+ ---> Using cache
+ ---> 161441aa9d85
+Step 4/6 : COPY . .
+ ---> 9173d63da011
+Step 5/6 : RUN make all build/core-test build/strata-bench
+ ---> Running in 7cf5cb62edba
+mkdir -p build
+clang++ -Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread src/engine.cpp src/server.cpp -pthread -o build/strata
+python3 scripts/build_metadata.py --binary build/strata --compiler 'clang++' --flags='-Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread -pthread' --source src/engine.cpp --source src/server.cpp --source include/strata.hpp
+clang++ -Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread src/engine.cpp tests/core_test.cpp -pthread -o build/core-test
+clang++ -Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread src/engine.cpp src/benchmark.cpp -pthread -o build/strata-bench
+python3 scripts/build_metadata.py --binary build/strata-bench --compiler 'clang++' --flags='-Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread -pthread' --source src/engine.cpp --source src/benchmark.cpp --source include/strata.hpp
+ ---> Removed intermediate container 7cf5cb62edba
+ ---> 9fd524bc3b99
+Step 6/6 : CMD ["make", "test"]
+ ---> Running in 036de5dc8062
+ ---> Removed intermediate container 036de5dc8062
+ ---> 57057b1456cb
+Successfully built 57057b1456cb
+Successfully tagged strata-check:latest

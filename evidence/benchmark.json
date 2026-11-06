@@ -1,0 +1,212 @@
+{
+  "measured_at_utc": "2026-10-23T17:06:57.917688+00:00",
+  "environment": {
+    "os": "Darwin",
+    "os_release": "27.0.0",
+    "machine": "arm64",
+    "cpu": "Apple M4 Pro",
+    "logical_cpus": 14,
+    "python": "3.14.7",
+    "storage": "local temporary directory; no physical-device power-loss test",
+    "filesystem_block_bytes": 1048576
+  },
+  "builds": {
+    "strata": {
+      "built_at_utc": "2026-10-23T17:05:09.375434+00:00",
+      "compiler_command": "clang++",
+      "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+      "flags": "-Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread -pthread",
+      "binary_sha256": "ea9f62374196cf1bcd4d8161b88a118fccb6b39202b0e75539586e3a893a8b41",
+      "source_sha256": {
+        "src/engine.cpp": "35dbd843e19bb6918fae77bc278e7ce1a1badd6773e7759dc6569805c22c55b5",
+        "src/server.cpp": "46f91e78517e592d6fbeff8398edde3fffb026a8dba14b6e3bfaf93ed6ea1b45",
+        "include/strata.hpp": "36d315ec219ae9baba46c91430e37870b4382379ec2a08ca290fa6551967b39a"
+      }
+    },
+    "strata-bench": {
+      "built_at_utc": "2026-10-23T17:05:20.369649+00:00",
+      "compiler_command": "clang++",
+      "compiler_version": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+      "flags": "-Iinclude -std=c++20 -O2 -g -Wall -Wextra -Wpedantic -Wconversion -Wshadow -pthread -pthread",
+      "binary_sha256": "8fc58b3b7decf427b1a5fe794ac75002fcc5747186dc1fcef302512f2d77cac4",
+      "source_sha256": {
+        "src/engine.cpp": "35dbd843e19bb6918fae77bc278e7ce1a1badd6773e7759dc6569805c22c55b5",
+        "src/benchmark.cpp": "040b7191e75568b4a924ee6a6eb126e51eab516e69ec9f8927f0a10dcc45738c",
+        "include/strata.hpp": "36d315ec219ae9baba46c91430e37870b4382379ec2a08ca290fa6551967b39a"
+      }
+    }
+  },
+  "method": {
+    "index_dataset_seed": 20261023,
+    "query_seed": 813492,
+    "query_order": "alternate index-first and scan-first; warm in-memory data",
+    "query_shape": "128 streams, shuffled inserts, duplicate timestamps, 1-20 second windows, limits 1-60; 7/135 stream names absent",
+    "comparison": "every returned Record field compared for every query",
+    "dataset_load": "buffered, followed by explicit fsync; excluded from durable write result",
+    "durable_writes": "one fsync per acknowledged record, 32-byte payload, no group commit",
+    "scope": "single-process local measurements; not disk reads, concurrent throughput, or power-loss proof"
+  },
+  "source_sha256": {
+    "include/strata.hpp": "36d315ec219ae9baba46c91430e37870b4382379ec2a08ca290fa6551967b39a",
+    "src/benchmark.cpp": "040b7191e75568b4a924ee6a6eb126e51eab516e69ec9f8927f0a10dcc45738c",
+    "src/engine.cpp": "35dbd843e19bb6918fae77bc278e7ce1a1badd6773e7759dc6569805c22c55b5",
+    "src/server.cpp": "46f91e78517e592d6fbeff8398edde3fffb026a8dba14b6e3bfaf93ed6ea1b45"
+  },
+  "runs": [
+    {
+      "native": {
+        "dataset_records": 250000,
+        "streams": 128,
+        "payload_bytes": 32,
+        "queries": 1000,
+        "identical_results": true,
+        "rows_compared": 17079,
+        "result_digest": 1351854,
+        "wal_bytes": 20035160,
+        "buffered_load_seconds": 1.611466,
+        "explicit_sync_seconds": 0.002676,
+        "recovery_seconds": 0.662551,
+        "peak_rss_bytes": 82427904,
+        "indexed": {
+          "p50_us": 7.834,
+          "p95_us": 20.541,
+          "p99_us": 33.917
+        },
+        "full_scan": {
+          "p50_us": 1844.042,
+          "p95_us": 2359.5,
+          "p99_us": 2891.5
+        },
+        "median_query_speedup": 235.389584,
+        "durable": {
+          "writes": 1000,
+          "elapsed_seconds": 0.051846,
+          "writes_per_second": 19287.798057,
+          "latency": {
+            "p50_us": 45.5,
+            "p95_us": 86.333,
+            "p99_us": 134.416
+          }
+        }
+      },
+      "tcp_durable": {
+        "writes": 1000,
+        "clients": 1,
+        "persistent_connection": true,
+        "writes_per_second": 5764.070817235563,
+        "elapsed_seconds": 0.1734885000041686,
+        "latency": {
+          "p50_us": 151.0829897597432,
+          "p95_us": 269.2500129342079,
+          "p99_us": 471.4170063380152
+        }
+      }
+    },
+    {
+      "native": {
+        "dataset_records": 250000,
+        "streams": 128,
+        "payload_bytes": 32,
+        "queries": 1000,
+        "identical_results": true,
+        "rows_compared": 17079,
+        "result_digest": 1351854,
+        "wal_bytes": 20035160,
+        "buffered_load_seconds": 1.502461,
+        "explicit_sync_seconds": 0.004962,
+        "recovery_seconds": 0.549549,
+        "peak_rss_bytes": 81788928,
+        "indexed": {
+          "p50_us": 7.292,
+          "p95_us": 14.167,
+          "p99_us": 24.041
+        },
+        "full_scan": {
+          "p50_us": 1804.875,
+          "p95_us": 2207.25,
+          "p99_us": 2508.75
+        },
+        "median_query_speedup": 247.514399,
+        "durable": {
+          "writes": 1000,
+          "elapsed_seconds": 0.065349,
+          "writes_per_second": 15302.345502,
+          "latency": {
+            "p50_us": 47.125,
+            "p95_us": 122.417,
+            "p99_us": 367.208
+          }
+        }
+      },
+      "tcp_durable": {
+        "writes": 1000,
+        "clients": 1,
+        "persistent_connection": true,
+        "writes_per_second": 8946.164222221158,
+        "elapsed_seconds": 0.11177974997553974,
+        "latency": {
+          "p50_us": 97.54201164469123,
+          "p95_us": 172.33399557881057,
+          "p99_us": 263.7909783516079
+        }
+      }
+    },
+    {
+      "native": {
+        "dataset_records": 250000,
+        "streams": 128,
+        "payload_bytes": 32,
+        "queries": 1000,
+        "identical_results": true,
+        "rows_compared": 17079,
+        "result_digest": 1351854,
+        "wal_bytes": 20035160,
+        "buffered_load_seconds": 1.690193,
+        "explicit_sync_seconds": 0.003352,
+        "recovery_seconds": 0.656322,
+        "peak_rss_bytes": 79904768,
+        "indexed": {
+          "p50_us": 8.042,
+          "p95_us": 22.75,
+          "p99_us": 43.417
+        },
+        "full_scan": {
+          "p50_us": 1978.292,
+          "p95_us": 3615.792,
+          "p99_us": 4765.625
+        },
+        "median_query_speedup": 245.995026,
+        "durable": {
+          "writes": 1000,
+          "elapsed_seconds": 0.072512,
+          "writes_per_second": 13790.915924,
+          "latency": {
+            "p50_us": 56.917,
+            "p95_us": 142.375,
+            "p99_us": 389.625
+          }
+        }
+      },
+      "tcp_durable": {
+        "writes": 1000,
+        "clients": 1,
+        "persistent_connection": true,
+        "writes_per_second": 6807.728472920245,
+        "elapsed_seconds": 0.14689187501790002,
+        "latency": {
+          "p50_us": 133.87500075623393,
+          "p95_us": 247.83401750028133,
+          "p99_us": 457.74999307468534
+        }
+      }
+    }
+  ],
+  "summary": {
+    "runs": 3,
+    "median_index_query_p50_us": 7.834,
+    "median_scan_query_p50_us": 1844.042,
+    "median_speedup": 245.995026,
+    "median_native_durable_writes_per_second": 15302.345502,
+    "median_tcp_durable_writes_per_second": 6807.728472920245
+  }
+}

@@ -1,0 +1,28 @@
+name: Strata native checks
+on: [push, pull_request]
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Locate standalone or portfolio checkout
+        shell: bash
+        run: |
+          if [ -f projects/strata/Makefile ]; then
+            echo "PROJECT_DIR=projects/strata" >> "$GITHUB_ENV"
+          else
+            echo "PROJECT_DIR=." >> "$GITHUB_ENV"
+          fi
+      - name: Install toolchain
+        run: sudo apt-get update && sudo apt-get install -y clang libclang-rt-18-dev make python3
+      - name: Native and end-to-end tests
+        run: make -C "$PROJECT_DIR" test
+      - name: Address and undefined behavior sanitizers
+        run: make -C "$PROJECT_DIR" sanitize
+      - name: Restore optimized binaries
+        run: make -C "$PROJECT_DIR" clean && make -C "$PROJECT_DIR" all build/strata-bench
+      - name: Crash experiment and benchmark smoke test
+        run: |
+          cd "$PROJECT_DIR"
+          python3 scripts/crash_demo.py --output /tmp/crash-demo.json
+          python3 scripts/benchmark.py --records 10000 --queries 100 --writes 100 --runs 1 --output /tmp/benchmark-smoke.json

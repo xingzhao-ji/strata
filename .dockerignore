@@ -1,0 +1,6 @@
+build
+evidence
+**/__pycache__
+*.wal
+writer.lock
+.git

@@ -1,0 +1,171 @@
+test_bounded_queue_and_absolute_partial_command_timeout (test_e2e.StrataTest.test_bounded_queue_and_absolute_partial_command_timeout) ... FAIL
+test_checksum_corruption_is_fatal_and_preserves_file (test_e2e.StrataTest.test_checksum_corruption_is_fatal_and_preserves_file) ... FAIL
+test_cli_rejects_invalid_options (test_e2e.StrataTest.test_cli_rejects_invalid_options) ... FAIL
+test_concurrent_writes_and_reads (test_e2e.StrataTest.test_concurrent_writes_and_reads) ... FAIL
+test_exclusive_writer_lock (test_e2e.StrataTest.test_exclusive_writer_lock) ... FAIL
+test_invalid_storage_paths (test_e2e.StrataTest.test_invalid_storage_paths) ... FAIL
+test_order_duplicates_inclusive_bounds_and_limit (test_e2e.StrataTest.test_order_duplicates_inclusive_bounds_and_limit) ... FAIL
+test_partial_pipelined_and_oversized_clients (test_e2e.StrataTest.test_partial_pipelined_and_oversized_clients) ... FAIL
+test_record_cap_and_restart_with_lower_cap (test_e2e.StrataTest.test_record_cap_and_restart_with_lower_cap) ... FAIL
+test_sigkill_restart_preserves_acknowledged_records (test_e2e.StrataTest.test_sigkill_restart_preserves_acknowledged_records) ... FAIL
+test_torn_tail_header_and_body_are_truncated (test_e2e.StrataTest.test_torn_tail_header_and_body_are_truncated) ... FAIL
+test_validation_and_connection_remains_usable (test_e2e.StrataTest.test_validation_and_connection_remains_usable) ... FAIL
+
+======================================================================
+FAIL: test_bounded_queue_and_absolute_partial_command_timeout (test_e2e.StrataTest.test_bounded_queue_and_absolute_partial_command_timeout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 210, in test_bounded_queue_and_absolute_partial_command_timeout
+    s = self.server("--workers", "1", "--queue", "1", "--timeout-ms", "300")
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_checksum_corruption_is_fatal_and_preserves_file (test_e2e.StrataTest.test_checksum_corruption_is_fatal_and_preserves_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 138, in test_checksum_corruption_is_fatal_and_preserves_file
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_cli_rejects_invalid_options (test_e2e.StrataTest.test_cli_rejects_invalid_options)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 249, in test_cli_rejects_invalid_options
+    self.expect_start_failure(*args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "<project>/tests/test_e2e.py", line 75, in expect_start_failure
+    assert BIN.is_file(), "Strata executable is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Strata executable is not implemented
+
+======================================================================
+FAIL: test_concurrent_writes_and_reads (test_e2e.StrataTest.test_concurrent_writes_and_reads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 173, in test_concurrent_writes_and_reads
+    s = self.server("--workers", "8", "--queue", "64")
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_exclusive_writer_lock (test_e2e.StrataTest.test_exclusive_writer_lock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 154, in test_exclusive_writer_lock
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_invalid_storage_paths (test_e2e.StrataTest.test_invalid_storage_paths)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 235, in test_invalid_storage_paths
+    self.assertNotEqual(self.expect_start_failure(), "")
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "<project>/tests/test_e2e.py", line 75, in expect_start_failure
+    assert BIN.is_file(), "Strata executable is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Strata executable is not implemented
+
+======================================================================
+FAIL: test_order_duplicates_inclusive_bounds_and_limit (test_e2e.StrataTest.test_order_duplicates_inclusive_bounds_and_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 84, in test_order_duplicates_inclusive_bounds_and_limit
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_partial_pipelined_and_oversized_clients (test_e2e.StrataTest.test_partial_pipelined_and_oversized_clients)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 193, in test_partial_pipelined_and_oversized_clients
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_record_cap_and_restart_with_lower_cap (test_e2e.StrataTest.test_record_cap_and_restart_with_lower_cap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 162, in test_record_cap_and_restart_with_lower_cap
+    s = self.server("--max-records", "2")
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_sigkill_restart_preserves_acknowledged_records (test_e2e.StrataTest.test_sigkill_restart_preserves_acknowledged_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 111, in test_sigkill_restart_preserves_acknowledged_records
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_torn_tail_header_and_body_are_truncated (test_e2e.StrataTest.test_torn_tail_header_and_body_are_truncated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 122, in test_torn_tail_header_and_body_are_truncated
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+======================================================================
+FAIL: test_validation_and_connection_remains_usable (test_e2e.StrataTest.test_validation_and_connection_remains_usable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<project>/tests/test_e2e.py", line 93, in test_validation_and_connection_remains_usable
+    s = self.server()
+  File "<project>/tests/test_e2e.py", line 70, in server
+    server = Server(self.directory, *args)
+  File "<project>/tests/test_e2e.py", line 22, in __init__
+    assert BIN.is_file(), f"Missing Strata executable: {BIN}; server behavior is not implemented"
+           ~~~~~~~~~~~^^
+AssertionError: Missing Strata executable: <project>/build/strata; server behavior is not implemented
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.006s
+
+FAILED (failures=12)

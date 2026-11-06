@@ -1,0 +1,12 @@
+python3 scripts/benchmark.py --output evidence/benchmark.json
+run 1: index 7.83 us; scan 1844.04 us; TCP durable 5764/s
+run 2: index 7.29 us; scan 1804.88 us; TCP durable 8946/s
+run 3: index 8.04 us; scan 1978.29 us; TCP durable 6808/s
+{
+  "runs": 3,
+  "median_index_query_p50_us": 7.834,
+  "median_scan_query_p50_us": 1844.042,
+  "median_speedup": 245.995026,
+  "median_native_durable_writes_per_second": 15302.345502,
+  "median_tcp_durable_writes_per_second": 6807.728472920245
+}

@@ -1,0 +1,29 @@
+clang++ -Iinclude -std=c++20 -O1 -g -Wall -Wextra -Wpedantic -pthread -fsanitize=address,undefined -fno-omit-frame-pointer src/engine.cpp src/server.cpp -o build/strata-asan
+clang++ -Iinclude -std=c++20 -O1 -g -Wall -Wextra -Wpedantic -pthread -fsanitize=address,undefined -fno-omit-frame-pointer src/engine.cpp tests/core_test.cpp -o build/core-test-asan
+./build/core-test-asan
+core: 528 indexed/scan comparisons and binary replay passed
+STRATA_BIN='/work/build/strata-asan' python3 -m unittest discover -s tests -v
+test_absolute_partial_command_timeout (test_e2e.StrataTest.test_absolute_partial_command_timeout) ... ok
+test_bounded_queue_rejects_excess_connections (test_e2e.StrataTest.test_bounded_queue_rejects_excess_connections) ... ok
+test_buffered_policy_has_explicit_sync_boundary (test_e2e.StrataTest.test_buffered_policy_has_explicit_sync_boundary) ... ok
+test_checksum_corruption_is_fatal_and_preserves_file (test_e2e.StrataTest.test_checksum_corruption_is_fatal_and_preserves_file) ... ok
+test_cli_rejects_invalid_options (test_e2e.StrataTest.test_cli_rejects_invalid_options) ... ok
+test_concurrent_writes_and_reads (test_e2e.StrataTest.test_concurrent_writes_and_reads) ... ok
+test_every_truncated_frame_boundary_recovers_only_complete_prefix (test_e2e.StrataTest.test_every_truncated_frame_boundary_recovers_only_complete_prefix) ... ok
+test_exclusive_writer_lock (test_e2e.StrataTest.test_exclusive_writer_lock) ... ok
+test_invalid_storage_paths (test_e2e.StrataTest.test_invalid_storage_paths) ... ok
+test_nonregular_storage_paths_fail_without_hanging (test_e2e.StrataTest.test_nonregular_storage_paths_fail_without_hanging) ... ok
+test_order_duplicates_inclusive_bounds_and_limit (test_e2e.StrataTest.test_order_duplicates_inclusive_bounds_and_limit) ... ok
+test_partial_os_write_failure_poison_and_restart (test_e2e.StrataTest.test_partial_os_write_failure_poison_and_restart) ... ok
+test_partial_pipelined_and_oversized_clients (test_e2e.StrataTest.test_partial_pipelined_and_oversized_clients) ... ok
+test_record_cap_and_restart_with_lower_cap (test_e2e.StrataTest.test_record_cap_and_restart_with_lower_cap) ... ok
+test_replays_independent_wal_fixture (test_e2e.StrataTest.test_replays_independent_wal_fixture) ... ok
+test_sigkill_restart_preserves_acknowledged_records (test_e2e.StrataTest.test_sigkill_restart_preserves_acknowledged_records) ... ok
+test_slow_reader_output_timeout_releases_worker (test_e2e.StrataTest.test_slow_reader_output_timeout_releases_worker) ... ok
+test_torn_tail_header_and_body_are_truncated (test_e2e.StrataTest.test_torn_tail_header_and_body_are_truncated) ... ok
+test_validation_and_connection_remains_usable (test_e2e.StrataTest.test_validation_and_connection_remains_usable) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 9.391s
+
+OK

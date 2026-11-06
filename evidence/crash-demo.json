@@ -1,0 +1,14 @@
+{
+  "measured_at_utc": "2026-10-23T16:55:40.153709+00:00",
+  "failure": "real SIGKILL, not graceful shutdown",
+  "limitation": "process crash on a running OS, not machine power loss",
+  "acknowledged_before_sigkill": 100,
+  "process_returncode": -9,
+  "records_verified_after_restart": 100,
+  "torn_tail_bytes_removed": 6,
+  "corrupt_complete_frame": {
+    "startup_exit_code": 1,
+    "error": "strata: corrupt WAL at byte 5164: record checksum",
+    "file_preserved": true
+  }
+}
