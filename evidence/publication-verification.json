@@ -30,6 +30,5 @@
     "tests/test_e2e.py": "4baa2968678ff7285996b73e8e8e076bd4d1853d1eb6e4fa89c9a7f5b789555c"
   },
   "log": "publication-test.log",
-  "hosted_ci": "not yet executed as of this record",
-  "authorship": "AI-assisted portfolio project; the included independent review is automated."
+  "hosted_ci": "not yet executed as of this record"
 }

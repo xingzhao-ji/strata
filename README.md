@@ -108,7 +108,7 @@ Threads share a `std::shared_mutex`: readers can run concurrently; writes serial
 
 No authentication, TLS, replication, distributed consensus, or remote deployment is provided. The service is intended for trusted loopback clients and an exclusively owned local directory. Symlinked WAL/lock files and nonregular storage files are rejected; hostile local users, network filesystems, and hard-link aliasing are outside the supported storage model.
 
-## What to inspect in an interview
+## Where to start reading
 
 - [engine.cpp](src/engine.cpp): on-disk framing, checksums, replay classification, fail-closed storage errors, process ownership, and range index.
 - [server.cpp](src/server.cpp): partial TCP input, bounded queue, connection admission, absolute deadlines, graceful shutdown, and parser validation.
@@ -116,3 +116,5 @@ No authentication, TLS, replication, distributed consensus, or remote deployment
 - [benchmark.cpp](src/benchmark.cpp): identical-result checks, alternating measurement order, explicit sync costs, and peak process RSS.
 
 The central tradeoff is inspectability: one append-only WAL, one process lock, and one shared index lock make publication and recovery understandable. The resulting serialized durable write path, full-memory index, and replay cost are deliberate limits that the evidence makes visible.
+
+Built with AI coding tools (Claude Code and Codex CLI); I reviewed and tested the result.

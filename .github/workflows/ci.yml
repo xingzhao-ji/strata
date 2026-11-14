@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Locate standalone or portfolio checkout
+      - name: Locate project directory
         shell: bash
         run: |
           if [ -f projects/strata/Makefile ]; then

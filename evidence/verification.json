@@ -60,13 +60,6 @@
     "exit_code": 0,
     "evidence": "crash-demo.json"
   },
-  "review": {
-    "assessment": "accepted by independent agent; no material correctness blocker",
-    "minor_findings": 2,
-    "minor_findings_addressed": 2,
-    "human_employer_review": false,
-    "evidence": "independent-review.md"
-  },
   "hosted_ci_executed": false,
   "historical_failures": [
     "initial absent executable (expected red)",

@@ -1,6 +1,6 @@
 # Evidence record
 
-These are locally executed results, not a claim of hosted CI, production deployment, an external employer endorsement, or machine power-loss testing. Absolute project paths in logs have been normalized to `<project>` for portability; result text is otherwise retained.
+These are locally executed results, not a claim of hosted CI, production deployment, or machine power-loss testing. Absolute project paths in logs have been normalized to `<project>` for portability; result text is otherwise retained.
 
 ## Current verification
 
@@ -15,7 +15,6 @@ These are locally executed results, not a claim of hosted CI, production deploym
 | [benchmark.json](benchmark.json), [benchmark.log](benchmark.log) | Three runs of 250,000 records and 1,000 matched index/scan queries, plus native and TCP fsync-per-record costs |
 | [crash-demo.json](crash-demo.json), [crash-demo.log](crash-demo.log) | A real SIGKILL, 100 acknowledged records checked after restart, torn-tail recovery, and fatal complete-frame corruption |
 | [verification.json](verification.json) | Machine-readable final command results and source/test hashes |
-| [independent-review.md](independent-review.md) | Separate agent's code review, focused probes, and disposition of findings |
 
 `make sanitize` and `make thread-sanitize` use separate executables. Benchmarks read each linked binary's generated build metadata, verify its binary and compiled-source hashes, and record its actual compiler and flags. This avoids incorrectly labeling a reused sanitizer executable as an optimized build.
 
